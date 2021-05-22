@@ -13,7 +13,7 @@ $sgv_menu_icon = '<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/met
     </g>
 </svg><!--end::Svg Icon-->';
 
-add_menu_admin('Kapula', U . 'bskapsula/app', 'Kapsula', $sgv_menu_icon , 2, [
+add_menu_admin('Kapsula', U . 'bskapsula/app', 'bskapsula', $sgv_menu_icon , 2, [
     [
         'name' => 'Pedidos',
         'link' => U . 'bskapsula/app/pedidos',
@@ -27,3 +27,11 @@ add_menu_admin('Kapula', U . 'bskapsula/app', 'Kapsula', $sgv_menu_icon , 2, [
         'link' => U . 'bskapsula/app/clientes/',
     ],
 ]);
+
+Event::bind('client/iview/',function(){
+
+    var_dump('ola');
+    die();
+
+
+});
