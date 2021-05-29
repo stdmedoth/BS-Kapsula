@@ -33,7 +33,8 @@ add_menu_admin('Kapsula', U . 'bskapsula/app', 'bskapsula', $sgv_menu_icon , 2, 
 ]);
 
 $route = route(0);
-$action = route(1);
+$action = route(2);
+$plugin_link = "?ng=bskapsula/app/";    
 
 if($route == 'bskapsula'){
     require 'Models/Pedidos.php';

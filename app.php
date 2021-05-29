@@ -71,8 +71,6 @@ switch ($element) {
 			
 		}
 
-		
-
 		view('app_wrapper', [
 			'_include' => 'config',
 			'url_base' => $plugin_link.'config',
