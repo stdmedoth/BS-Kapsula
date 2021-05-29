@@ -26,12 +26,29 @@ add_menu_admin('Kapsula', U . 'bskapsula/app', 'bskapsula', $sgv_menu_icon , 2, 
         'name' => 'Clientes',
         'link' => U . 'bskapsula/app/clientes/',
     ],
+    [
+        'name' => 'Configuração',
+        'link' => U . 'bskapsula/app/config/',
+    ],
 ]);
 
-Event::bind('client/iview/',function(){
+$route = route(0);
+$action = route(1);
 
-    var_dump('ola');
-    die();
+if($route == 'bskapsula'){
+    require 'Models/Pedidos.php';
+    require 'Models/Produtos.php';
+    require 'Models/Clientes.php';
+    require 'Models/Infos.php';
 
+    if(!defined('__KAPSULA_TOKEN__') && $action != 'config'){
+        $infos = AppKapsulaInfos::get();
 
-});
+        if($infos && isset($infos[0])){
+            define('__KAPSULA_TOKEN__', $infos[0]->token);
+        }else{
+            r2($plugin_link.'config');
+            return ;    
+        }   
+    }    
+}

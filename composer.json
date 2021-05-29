@@ -1,0 +1,11 @@
+{
+    "name": "calistu/bskapsula",
+    "description": "Integração entre BSuite e Kapsula",
+    "type": "project",
+    "authors": [
+        {
+            "name": "stdmedoth",
+            "email": "jovictor210@gmail.com"
+        }
+    ],
+}
