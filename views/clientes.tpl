@@ -27,15 +27,20 @@
 					    		<tr>
 					    				<th scope="col">Cliente</th>
 					    				<th scope="col">Código Kapsula</th>
+					    				<th scope="col">Nome</th>
 					    				<th scope="col">Ações</th>
 					    		</tr>
 					    	</thead>
 					    	<tbody>
 							{foreach $clientes_integrados as $cliente_integrado}
 							    <tr>
-							      <td><a href="?ng=orders/view/{$cliente->id_cliente}"> {$cliente_integrado->id_cliente}</td>
+							      <td><a href="?ng=contacts/view/{$cliente_integrado->id_cliente}/summary/"> {$cliente_integrado->id_cliente}</td>
 							      <td>{$cliente_integrado->id_kapsula}</td>
-							      <td> <a class="btn btn-danger">Deletar</a> </td>
+							      <td>{$cliente_integrado->nome_cliente}</td>
+							      <td> 
+							      	<a class="btn btn-danger" href="{$url_base}/delete/{$cliente_integrado->id}/">		Deletar
+							      	</a> 
+							      </td>
 							    </tr>
 							{/foreach}
 							</tbody>
@@ -54,8 +59,11 @@
 							{foreach $clientes as $cliente}
 							    <tr>
 							      <td><a href="?ng=contacts/view/6/summary/{$cliente->id}"> {$cliente->id}</td>
-							      <td>{$cliente->account}</td>
-							      <td> <a class="btn btn-danger">Integrar com a Kapsula</a> </td>
+							      <td>
+							      	<a class="btn btn-link" target="_blank" href="?ng=contacts/view/{$cliente->id}/summary/">	{$cliente->account}
+							      	</a>
+							      </td>
+							      <td> <a class="btn btn-danger ksp_cliente_enviar_kapsula" data-cliente="{$cliente->id}" href="javascript:void(0)">Integrar com a Kapsula</a> </td>
 							    </tr>
 							{/foreach}
 							</tbody>
@@ -73,5 +81,6 @@
 
 <script type="text/javascript" src="apps/bskapsula/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="apps/bskapsula/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="apps/bskapsula/js/notify.min.js"></script>
 <script type="text/javascript" src="apps/bskapsula/js/bskapsula_js.js"></script>
 {/block}

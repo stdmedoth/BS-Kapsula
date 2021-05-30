@@ -7,6 +7,7 @@ $element = route(2);
 $action = route(3);
 $id = route(4);
 
+
 switch ($element) {
 	case 'pedidos':
 
@@ -16,7 +17,6 @@ switch ($element) {
 			if($pedidos){
 				$pedidos->delete();	
 			}
-			
 			r2($plugin_link.'pedidos');
 		}
 
@@ -44,11 +44,20 @@ switch ($element) {
 
 	case 'clientes':
 
+		if($action == 'delete'){
+			$clientes = AppKapsulaClientes::find($id);			
+			if($clientes){
+				$clientes->delete();	
+			}
+			r2($plugin_link.'clientes');
+		}
+		
 		$clientes_integrados = AppKapsulaClientes::get();
 		$clientes = Contact::get();
 
 		view('app_wrapper', [
 			'_include' => 'clientes',
+			'url_base' => $plugin_link.'clientes',
 			'clientes_integrados' => $clientes_integrados,
 			'clientes' => $clientes
 		]);

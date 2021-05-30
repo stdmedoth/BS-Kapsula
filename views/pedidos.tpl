@@ -43,7 +43,9 @@
 								      </td>
 								      <td> 
 								      	<a class="btn btn-secondary" href="?ng=orders/view/{$pedido_integrado->id_pedido}">Ir para o Pedido</a>
-								      	<a class="btn btn-danger" href="{$url_base}/delete/{$pedido_integrado->id}/">Deletar</a>
+								      	<a class="btn btn-danger" href="{$url_base}/delete/{$pedido_integrado->id}/">
+								      		Deletar
+								      	</a>
 								      </td>
 								    </tr>
 								{/foreach}

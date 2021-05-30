@@ -26,6 +26,7 @@ if (!db_table_exist('app_kapsula_produtos')) {
         $table->increments('id');
         $table->string('id_kapsula')->nullable();
         $table->string('id_pacote')->nullable();
+        $table->string('nome_pacote')->nullable();
         $table->timestamps();
     });
 }
@@ -36,6 +37,7 @@ if (!db_table_exist('app_kapsula_clientes')) {
         $table->increments('id');
         $table->string('id_kapsula')->nullable();
         $table->string('id_cliente')->nullable();
+        $table->string('nome_cliente')->nullable();
         $table->timestamps();
     });
 }
@@ -46,6 +48,7 @@ if (!db_table_exist('app_kapsula_pedidos')) {
         $table->increments('id');
         $table->string('id_kapsula')->nullable();
         $table->string('id_pedido')->nullable();
+        $table->string('nome_cliente')->nullable();
         $table->timestamps();
     });
 }
