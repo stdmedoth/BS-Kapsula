@@ -29,6 +29,7 @@
 					    		<tr>
 				    				<th scope="col">Pedido</th>
 				    				<th scope="col">Código Kapsula</th>
+				    				<th scope="col">Nome Cliente</th>
 				    				<th scope="col">Ações</th>
 					    		</tr>
 					    	</thead>
@@ -39,10 +40,14 @@
 								      	<a href="?ng=orders/view/{$pedido_integrado->id_pedido}"> {$pedido_integrado->id_pedido} </a>
 								      </td>
 								      <td>
-								      	<a target="_blank" href="https://ev.kapsula.com.br/pedido/detalhes/{$pedido_integrado->id_kapsula}"> {$pedido_integrado->id_kapsula}</a>
+								      	<a target="_blank" href="https://ev.kapsula.com.br/pedido/detalhes/		{$pedido_integrado->id_kapsula}"> {$pedido_integrado->id_kapsula}
+								      	</a>
+								      </td>
+								      <td>
+								      	{$pedido_integrado->nome_cliente}
 								      </td>
 								      <td> 
-								      	<a class="btn btn-secondary" href="?ng=orders/view/{$pedido_integrado->id_pedido}">Ir para o Pedido</a>
+								      	<a class="btn btn-secondary" target="_blank" href="?ng=orders/view/{$pedido_integrado->id_pedido}">Ir para o Pedido</a>
 								      	<a class="btn btn-danger" href="{$url_base}/delete/{$pedido_integrado->id}/">
 								      		Deletar
 								      	</a>

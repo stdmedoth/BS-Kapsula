@@ -21,7 +21,8 @@ switch ($element) {
 		}
 
 		$pedidos_integrados = AppKapsulaPedidos::get();
-		$pedidos = Order::get();
+		$id_list = array_map(function($e){return $e['id_pedido'];},  $pedidos_integrados->toArray());
+		$pedidos = Order::whereNotIn( 'id', $id_list )->get();
 
 		view('app_wrapper', [
 			'_include' => 'pedidos',
@@ -53,7 +54,10 @@ switch ($element) {
 		}
 		
 		$clientes_integrados = AppKapsulaClientes::get();
-		$clientes = Contact::get();
+
+		$id_list = array_map(function($e){return $e['id_cliente'];},  $clientes_integrados->toArray());
+		
+		$clientes = Contact::whereNotIn( 'id', $id_list )->get();
 
 		view('app_wrapper', [
 			'_include' => 'clientes',
