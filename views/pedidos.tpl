@@ -22,7 +22,6 @@
 				  </li>
 				</ul>
 				<div class="tab-content">
-		            <!--<a class="btn btn-primary" id="ksp_pedidos_newbtn" href="javascript:void(0)">Nova</a>-->
 					<div class="tab-pane fade show active" role="tabpanel" id="pedidos_integrados" aria-labelledby="pedidos_integrados-tab">
 						<table class="table" id="ksp_pedidos_integrados">
 					  		<thead>
@@ -75,10 +74,10 @@
 							    		<a href="?ng=orders/view/{$pedido->id}"> {$pedido->id} </a>
 							    	</td>
 							      	<td>
-							      		<a class="btn btn-link" target="_blank" href="?ng=contacts/view/6/summary/{$pedido->cid}"> 		{$pedido->cname}
+							      		<a class="btn btn-link" target="_blank" href="?ng=contacts/view/6/summary/{$pedido->cid}"> 		{$pedido->account}
 							      		</a>
 							    	</td>
-							    	<td> {$pedido->date_added}</td>
+							    	<td> {$pedido->date}</td>
 									<td> {$pedido->status} </td>
 							  		<td>
 							  			<a class="btn btn-primary ksp_pedido_enviar_kapsula" href="javascript:void(0)" data-pedido="{$pedido->id}">	Enviar para Kapsula

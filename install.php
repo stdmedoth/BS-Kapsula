@@ -26,7 +26,7 @@ if (!db_table_exist('app_kapsula_produtos')) {
         $table->increments('id');
         $table->string('id_kapsula')->nullable();
         $table->string('id_pacote')->nullable();
-        $table->string('nome_pacote')->nullable();
+        $table->string('nome_produto')->nullable();
         $table->timestamps();
     });
 }

@@ -8,7 +8,7 @@ class BS_TO_KSP {
 	public function get_kps_pedido($pedido){
 		$ksp_pedido = new Pedido();
 
-		$kps_cliente = AppKapsulaClientes::where('id_cliente', $pedido->cid)->first();	
+		$kps_cliente = AppKapsulaClientes::where('id_cliente', $pedido->userid)->first();	
 		if(!$kps_cliente){
 			$retorno['status'] = 0;
 			$retorno['mensagem'] = 'Cliente não integrado com a Kapsula';
@@ -16,9 +16,17 @@ class BS_TO_KSP {
 			return NULL;
 		}
 		$ksp_pedido->cliente_id = $kps_cliente->id_kapsula;
-		$ksp_pedido->pacote_id = 11553;
+		
+		$pacote = AppKapsulaProdutos::where('id_produto', $pedido->pacote)->first();
+		if(!$pacote){
+			$retorno['status'] = 0;
+			$retorno['mensagem'] = 'Pacote não integrado com a Kapsula';
+			echo json_encode($retorno);
+			return NULL;
+		}
+		$ksp_pedido->pacote_id = $pacote['id_kapsula'];
 		$ksp_pedido->tipo_frete = 0;
-		$ksp_pedido->valor_venda = 0;
+		$ksp_pedido->valor_venda = $pedido->subtotal;
 		return $ksp_pedido;
 	} 
 

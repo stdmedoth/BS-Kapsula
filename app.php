@@ -22,7 +22,7 @@ switch ($element) {
 
 		$pedidos_integrados = AppKapsulaPedidos::get();
 		$id_list = array_map(function($e){return $e['id_pedido'];},  $pedidos_integrados->toArray());
-		$pedidos = Order::whereNotIn( 'id', $id_list )->get();
+		$pedidos = Invoice::whereNotIn( 'id', $id_list )->get();
 
 		view('app_wrapper', [
 			'_include' => 'pedidos',
@@ -35,10 +35,22 @@ switch ($element) {
 
 	case 'produtos':
 
-		$produtos = AppKapsulaProdutos::get();
+		if($action == 'delete'){
+			$produtos = AppKapsulaProdutos::find($id);			
+			if($produtos){
+				$produtos->delete();	
+			}
+			r2($plugin_link.'produtos');
+		}
+
+		$produtos_integrados = AppKapsulaProdutos::get();
+		$id_list = array_map(function($e){return $e['id_produto'];},  $produtos_integrados->toArray());
+		$produtos = Item::whereNotIn( 'id', $id_list )->get();
 
 		view('app_wrapper', [
+			'url_base' => $plugin_link.'produtos',
 			'_include' => 'produtos',
+			'produtos_integrados' => $produtos_integrados,
 			'produtos' => $produtos
 		]);
 		break;
@@ -54,9 +66,7 @@ switch ($element) {
 		}
 		
 		$clientes_integrados = AppKapsulaClientes::get();
-
-		$id_list = array_map(function($e){return $e['id_cliente'];},  $clientes_integrados->toArray());
-		
+		$id_list = array_map(function($e){return $e['id_cliente'];},  $clientes_integrados->toArray());		
 		$clientes = Contact::whereNotIn( 'id', $id_list )->get();
 
 		view('app_wrapper', [

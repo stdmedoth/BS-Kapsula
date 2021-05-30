@@ -13,6 +13,7 @@ $retorno['status'] = 0;
 $retorno['mensagem'] = 'Nada aqui';
 
 switch($action){
+
 	case 'send_pedido':
 		if(!$id){
 			$retorno['status'] = 0;
@@ -29,13 +30,22 @@ switch($action){
 			return ;
 		}
 
-		$order = Order::find($id);
+		$order = Invoice::find($id);
+		$item = Item::where( [ 'name' => InvoiceItem::where(['invoiceid'=>$id])->first()['description'] ] )->first();
+		if(!$item){
+			$retorno['status'] = 0;
+			$retorno['mensagem'] = 'Nenhum item encontrado para o pedido';
+			echo json_encode($retorno);
+			return ;
+		}
+		$order->pacote = $item->id;
 		if(!$order){
 			$retorno['status'] = 0;
 			$retorno['mensagem'] = 'Pedido não existente';
 			echo json_encode($retorno);
 			return ;
 		}
+		
 		$ksp_pedido = $standart->get_kps_pedido($order);
 		if(!$ksp_pedido){
 			return ;
@@ -117,4 +127,28 @@ switch($action){
 
 		echo json_encode($retorno);
 		break;
+
+	case 'create_integracao':
+		
+		$id_bs = _post('id_bs');
+		$id_kapsula = _post('id_kapsula');
+		$nome = _post('nome');
+		$table = _post('element');
+
+		$id_table = "id_{$table}";
+		$nome_element = "nome_{$table}";
+
+		$integracao = ORM::for_table('app_kapsula_'.$table.'s')->create();
+		$integracao->id_kapsula = $id_kapsula;
+		$integracao->{$id_table} = $id_bs;
+		$integracao->{$nome_element} = $nome;
+		if(!$integracao->save()){
+			$retorno['status'] = 0;	
+			$retorno['mensagem'] = "Não foi possível criar integração com {$table}";
+			echo json_encode($retorno);
+			return ;
+		}
+		$retorno['status'] = 1;	
+		$retorno['mensagem'] = "{$table} Integrado com sucesso";
+		echo json_encode($retorno);		
 }
