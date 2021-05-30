@@ -31,7 +31,7 @@ switch($action){
 		}
 
 		$order = Invoice::find($id);
-		$item = Item::where( [ 'name' => InvoiceItem::where(['invoiceid'=>$id])->first()['description'] ] )->first();
+		$item = InvoiceItem::where(['invoiceid'=>$id])->first();
 		if(!$item){
 			$retorno['status'] = 0;
 			$retorno['mensagem'] = 'Nenhum item encontrado para o pedido';

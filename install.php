@@ -25,7 +25,7 @@ if (!db_table_exist('app_kapsula_produtos')) {
     DB::schema()->create('app_kapsula_produtos', function ($table) {
         $table->increments('id');
         $table->string('id_kapsula')->nullable();
-        $table->string('id_pacote')->nullable();
+        $table->string('id_produto')->nullable();
         $table->string('nome_produto')->nullable();
         $table->timestamps();
     });

@@ -11,12 +11,12 @@
 	           	<ul class="nav nav-tabs">
 					<li class="nav-item">
 				    	<a class="nav-link active" role="tab" data-toggle="tab" href="#produtos_integrados" aria-selected="true">
-				    		Produtos Integrados
+				    		Pacotes Integrados
 				    	</a>
 				  	</li>
 				  	<li class="nav-item">
 				    	<a class="nav-link" role="tab" data-toggle="tab" href="#produtos_a_integrar" aria-selected="false">
-				    		Produtos a Integrar
+				    		Pacotes a Integrar
 						</a>
 				  	</li>
 				</ul>
@@ -58,6 +58,7 @@
 				    				<th scope="col">Código</th>
 				    				<th scope="col">Nome</th>
 				    				<th scope="col">Valor</th>
+				    				<th scope="col">Fatura</th>
 				    				<th scope="col">Ações</th>
 					    		</tr>
 					    	</thead>
@@ -68,14 +69,17 @@
 							      	<a href="?ng=ps/products/{$produto->id}"> {$produto->id} </a>
 							      </td>
 							      <td>
-							      	<a target="_blank" href="?ng=ps/view/{$produto->id}">{$produto->name}</a>
+							      	<a target="_blank" href="?ng=ps/view/{$produto->id}">{$produto->description}</a>
 							      </td>
 							      <td> 
-							      		{$produto->sales_price}
+							      		{$produto->amount}
+							      </td>
+							      <td>
+							      	<a target="_blank" href="?ng=ps/view/{$produto->id}">{$produto->invoiceid}</a>
 							      </td>
 							      <td> 
 							      	<!--<a class="btn btn-danger ksp_produto_enviar_kapsula" data-produto="{$produto->id}" href="javascript:void(0)">Enviar para Kapsula</a>-->
-							      	<a class="btn btn-danger ksp_produto_integrar_kapsula" data-produto="{$produto->id}" data-nomeproduto="{$produto->name}" href="javascript:void(0)">Vincular com Pacote Kapsula</a>
+							      	<a class="btn btn-danger ksp_produto_integrar_kapsula" data-produto="{$produto->id}" data-nomeproduto="{$produto->description}" href="javascript:void(0)">Vincular com Pacote Kapsula</a>
 							      </td>
 							    </tr>
 							{/foreach}

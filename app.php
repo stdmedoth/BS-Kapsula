@@ -22,7 +22,7 @@ switch ($element) {
 
 		$pedidos_integrados = AppKapsulaPedidos::get();
 		$id_list = array_map(function($e){return $e['id_pedido'];},  $pedidos_integrados->toArray());
-		$pedidos = Invoice::whereNotIn( 'id', $id_list )->get();
+		$pedidos = Invoice::whereNotIn( 'id', $id_list )->orderBy('duedate','DESC')->get();
 
 		view('app_wrapper', [
 			'_include' => 'pedidos',
@@ -45,7 +45,7 @@ switch ($element) {
 
 		$produtos_integrados = AppKapsulaProdutos::get();
 		$id_list = array_map(function($e){return $e['id_produto'];},  $produtos_integrados->toArray());
-		$produtos = Item::whereNotIn( 'id', $id_list )->get();
+		$produtos = InvoiceItem::whereNotIn( 'id', $id_list )->orderBy('duedate','DESC')->get();
 
 		view('app_wrapper', [
 			'url_base' => $plugin_link.'produtos',
