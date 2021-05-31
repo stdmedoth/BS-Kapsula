@@ -58,7 +58,7 @@ switch($action){
 				$integracao = new AppKapsulaPedidos();	
 				$integracao->id_pedido = $id;
 				$integracao->id_kapsula = $response->pedido;
-				$integracao->nome_cliente = $order->cname;
+				$integracao->nome_cliente = $order->account;
 				$integracao->save();
 			}else{
 				if(isset($response->erros))
