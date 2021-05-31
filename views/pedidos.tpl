@@ -78,7 +78,7 @@
 							      		</a>
 							    	</td>
 							    	<td> {$pedido->date}</td>
-									<td> {$pedido->status} </td>
+									<td> {$_L["{$pedido->status}"]} </td>
 							  		<td>
 							  			<a class="btn btn-primary ksp_pedido_enviar_kapsula" href="javascript:void(0)" data-pedido="{$pedido->id}">	Enviar para Kapsula
 							  			</a>
