@@ -38,7 +38,7 @@ switch($action){
 			echo json_encode($retorno);
 			return ;
 		}
-		$order->pacote = $item->id;
+		$order->pacote = $item->itemcode;
 		if(!$order){
 			$retorno['status'] = 0;
 			$retorno['mensagem'] = 'Pedido não existente';

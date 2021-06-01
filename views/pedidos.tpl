@@ -36,7 +36,7 @@
 								{foreach $pedidos_integrados as $pedido_integrado}
 								    <tr>
 								      <td>
-								      	<a href="?ng=orders/view/{$pedido_integrado->id_pedido}"> {$pedido_integrado->id_pedido} </a>
+								      	<a href="?ng=invoices/view/{$pedido_integrado->id_pedido}"> {$pedido_integrado->id_pedido} </a>
 								      </td>
 								      <td>
 								      	<a target="_blank" href="https://ev.kapsula.com.br/pedido/detalhes/		{$pedido_integrado->id_kapsula}"> {$pedido_integrado->id_kapsula}
@@ -71,7 +71,7 @@
 					    		{foreach $pedidos as $pedido}
 								<tr>
 							    	<td>
-							    		<a href="?ng=orders/view/{$pedido->id}"> {$pedido->id} </a>
+							    		<a href="?ng=invoices/view/{$pedido->id}" target="_blank"> {$pedido->id} </a>
 							    	</td>
 							      	<td>
 							      		<a class="btn btn-link" target="_blank" href="?ng=contacts/view/6/summary/{$pedido->cid}"> 		{$pedido->account}

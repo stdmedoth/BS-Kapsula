@@ -79,7 +79,7 @@
 							      </td>
 							      <td> 
 							      	<!--<a class="btn btn-danger ksp_produto_enviar_kapsula" data-produto="{$produto->id}" href="javascript:void(0)">Enviar para Kapsula</a>-->
-							      	<a class="btn btn-danger ksp_produto_integrar_kapsula" data-produto="{$produto->id}" data-nomeproduto="{$produto->description}" href="javascript:void(0)">Vincular com Pacote Kapsula</a>
+							      	<a class="btn btn-danger ksp_produto_integrar_kapsula" data-produto="{$produto->id}" data-nomeproduto="{$produto->name}" href="javascript:void(0)">Vincular com Pacote Kapsula</a>
 							      </td>
 							    </tr>
 							{/foreach}
