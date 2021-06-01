@@ -36,20 +36,30 @@ $route = route(0);
 $action = route(2);
 $plugin_link = "?ng=bskapsula/app/";    
 
-if($route == 'bskapsula'){
-    require 'Models/Pedidos.php';
-    require 'Models/Produtos.php';
-    require 'Models/Clientes.php';
-    require 'Models/Infos.php';
+switch($route){
 
-    if(!defined('__KAPSULA_TOKEN__') && $action != 'config'){
-        $infos = AppKapsulaInfos::get();
+    case 'bskapsula':
+        require 'Models/Pedidos.php';
+        require 'Models/Produtos.php';
+        require 'Models/Clientes.php';
+        require 'Models/Infos.php';
 
-        if($infos && isset($infos[0])){
-            define('__KAPSULA_TOKEN__', $infos[0]->token);
-        }else{
-            r2($plugin_link.'config');
-            return ;    
-        }   
-    }    
+        if(!defined('__KAPSULA_TOKEN__') && $action != 'config'){
+            $infos = AppKapsulaInfos::get();
+
+            if($infos && isset($infos[0])){
+                define('__KAPSULA_TOKEN__', $infos[0]->token);
+            }else{
+                r2($plugin_link.'config');
+                return ;    
+            }   
+        } 
+        break;
+
+    case 'cart':
+        require 'cart.php';
+        
+        kps_cart_route();
+        break;
 }
+

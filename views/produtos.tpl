@@ -58,7 +58,7 @@
 				    				<th scope="col">Código</th>
 				    				<th scope="col">Nome</th>
 				    				<th scope="col">Valor</th>
-				    				<th scope="col">Fatura</th>
+				    				<th scope="col">Saldo</th>
 				    				<th scope="col">Ações</th>
 					    		</tr>
 					    	</thead>
@@ -69,13 +69,13 @@
 							      	<a href="?ng=ps/products/{$produto->id}"> {$produto->id} </a>
 							      </td>
 							      <td>
-							      	<a target="_blank" href="?ng=ps/view/{$produto->id}">{$produto->description}</a>
+							      	<a target="_blank" href="?ng=ps/products/{$produto->id}">{$produto->name}</a>
 							      </td>
 							      <td> 
-							      		{$produto->amount}
+							      		{$produto->sales_price}
 							      </td>
 							      <td>
-							      	<a target="_blank" href="?ng=ps/view/{$produto->id}">{$produto->invoiceid}</a>
+							      	<a target="_blank" href="?ng=ps/products/{$produto->id}">{$produto->inventory}</a>
 							      </td>
 							      <td> 
 							      	<!--<a class="btn btn-danger ksp_produto_enviar_kapsula" data-produto="{$produto->id}" href="javascript:void(0)">Enviar para Kapsula</a>-->

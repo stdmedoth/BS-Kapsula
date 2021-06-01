@@ -45,7 +45,7 @@ switch ($element) {
 
 		$produtos_integrados = AppKapsulaProdutos::get();
 		$id_list = array_map(function($e){return $e['id_produto'];},  $produtos_integrados->toArray());
-		$produtos = InvoiceItem::whereNotIn( 'id', $id_list )->orderBy('duedate','DESC')->get();
+		$produtos = Item::whereNotIn( 'id', $id_list )->orderBy('created_at','DESC')->get();
 
 		view('app_wrapper', [
 			'url_base' => $plugin_link.'produtos',
