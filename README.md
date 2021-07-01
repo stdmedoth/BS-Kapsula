@@ -18,7 +18,6 @@ With this plugin you can get products, clients from Kapsula, and send Orders to 
 ![BSKapsula Integration](https://raw.githubusercontent.com/stdmedoth/BS-Kapsula/main/data/img/integracao_cliente_screenshot.png)
 
 
-
 Calisto – jovictor210@gmail.com
 
 ## Contributing
